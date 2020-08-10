@@ -7,7 +7,9 @@ home_routes = Blueprint("home_routes", __name__)
 @home_routes.route("/")
 def index():
     print("VISITED THE HOME PAGE")
+    print(foods)
     #return "Welcome Home (TODO)"
+    foods.clear()
     return render_template("home.html")
 
 foods = []
@@ -15,21 +17,27 @@ foods = []
 @home_routes.route("/recipes", methods=["POST"])
 def view_recipes():
     print("VISITED RECIPE PAGE") 
+    print(foods)
+
     food = request.form["food"]
     foods.append(food)
     parsed_response_id = get_response_id(food)
     recipe_list = recipe_options(parsed_response_id)
     list_length = len(recipe_list)
+
+    print(recipe_list)
     return render_template("view_recipes.html", food = food, recipe_list = recipe_list)
 
 @home_routes.route("/recipes/ingredients", methods=["POST"])
 def view_ingredients():
     print("VISITED INGREDIENTS PAGE")
+    print(foods)
+
     number = request.form["recipe"]
 
     number = eval(number)
-
-    parsed_response_id = get_response_id(foods)
+    # get last element in the list
+    parsed_response_id = get_response_id(foods[-1])
 
     recipe_list = recipe_options(parsed_response_id)
 
