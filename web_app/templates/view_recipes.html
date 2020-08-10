@@ -1,0 +1,26 @@
+{% extends "bootstrap_layout.html" %}
+
+{% block content %}
+
+<h1>Recipe List for '{{food}}'...</h1>
+
+<ol>
+{% for recipe in recipe_list %}
+
+
+    <li>{{recipe}}</li>
+
+{% endfor %}
+</ol> 
+
+
+<form action="/recipes/ingredients" method="POST" >
+    <label>Number:</label>
+    <input type="text" name="recipe" placeholder="1-10">
+    <br>
+    <button>Submit</button>
+</form>
+
+{% endblock %}
+
+

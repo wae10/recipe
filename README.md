@@ -16,3 +16,16 @@ From within the virtual environment, install the required packages specified in 
 ```sh
 pip install -r requirements.txt
 ```
+### FLASK
+
+To open and run the website locally on your computer, use the following command:
+
+```sh
+FLASK_APP=web_app flask run
+```
+
+To visit the website while runninig locally, enter the followinig into your browser:
+
+```sh
+http://127.0.0.1:5000/
+```

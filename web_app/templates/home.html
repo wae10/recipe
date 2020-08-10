@@ -3,14 +3,30 @@
 
 {% block content %}
 
-    <h1>Welcome</h1>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <br>
 
-    <p>This is my dope web app, where you will be able to do the following things:</p>
+    <style>
+        ::placeholder {
+        color: gray;
+        }
 
-    <ul>
-        <li>Navigate between pages</li>
-        <li>Check the weather</li>
-        <li>Sign up for email weather reports</li>
-    </ul>
+        h1 {text-align: center;}
+
+        h6 {text-align: center;}
+
+    </style>
+
+
+    <h1>Welcome to the Recipe Master</h1>
+
+    <h6>Just enter a type of food to receive a list of recipes for it!</h6>
+
+<form action="/recipes" method="POST" >
+    <label>Food:</label>
+    <input type="text" name="food" placeholder="ex: burger">
+    <br>
+    <button>Submit</button>
+</form>
     
 {% endblock %}
