@@ -37,10 +37,10 @@ def view_ingredients():
 
     food = food_id(true_index_of_recipe, parsed_response_id)
 
-    parsed_response_recipe = get_response_recipe(food_id)
+    parsed_response_recipe = get_response_recipe(food)
 
     recipe = recipe_list[true_index_of_recipe]
 
     ingredient = ingredients(parsed_response_recipe)
 
-    return render_template("view_ingredients.html", recipe = recipe, ingredient = ingredient)
+    return render_template("view_ingredients.html", ingredient = ingredient, recipe = recipe)

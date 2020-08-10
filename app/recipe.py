@@ -99,8 +99,9 @@ if __name__ == "__main__":
 
     print("\nHere are the ingredients for", recipe_list[chosen_recipe], "\n")
 
-    ingredients = ingredients(food_id, parsed_response_recipe)
+    ingredients = ingredients(parsed_response_recipe)
 
+    print(ingredients)
 
 
 
