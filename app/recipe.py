@@ -26,10 +26,6 @@ def get_response_recipe(food_id):
     parsed_response = json.loads(response.text)
     return parsed_response
 
-def enter_food():
-    food = input("\nEnter desired food: ")
-    return food
-
 
 def recipe_options(parsed_response_id):
     recipe_list = []
@@ -37,11 +33,6 @@ def recipe_options(parsed_response_id):
         recipe_list.append(str(parsed_response_id["results"][i]["title"]))
     return recipe_list
 
-# def chosen_recipe(number):
-
-#     # adjust for position in index
-#     true_index_of_recipe = number - 1
-#     return true_index_of_recipe
 
 def food_id(chosen_recipe, parsed_response_id):
     food_id = parsed_response_id["results"][chosen_recipe]["id"]
@@ -61,19 +52,31 @@ def ingredients(parsed_response_recipe):
 
     return ingredients
 
+def recipe_photo(parsed_response_id):
+    recipe_photos_list = []
+    for i in range(0, len(parsed_response_id["results"])):
+        recipe_photos_list.append(parsed_response_id["results"][i]["image"])
+    return recipe_photos_list
+
+
+
 # needed to remove from global scope
 if __name__ == "__main__":
 
 
     #runs enter_food() function
-    food = enter_food()
+    food = input("\nEnter desired food: ")
 
     # parsed reponse, we want id
     parsed_response_id = get_response_id(food)
 
-    # list of recipe options given parsed_response dict from entered food
+    print(parsed_response_id)
 
+    # list of recipe options given parsed_response dict from entered food
     recipe_list = recipe_options(parsed_response_id)
+
+    # list of recipe images given parsed_response dict from entered food
+    recipe_photos_list = recipe_photo(parsed_response_id)
 
     # place holder for printed recipe number
     recipe_number = 0
@@ -83,6 +86,11 @@ if __name__ == "__main__":
     for recipe in recipe_list:
         recipe_number += 1
         print(str(recipe_number) + ". " + recipe)
+
+    print("\n------------------------------------IMAGES------------------------------------\n")
+
+    for recipe_photo in recipe_photos_list:
+        print("https://spoonacular.com/recipeImages/" + recipe_photo)
 
     number = eval(input("Which recipe, enter number: "))
 

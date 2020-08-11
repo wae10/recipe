@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, redirect, request, flash
 
-from app.recipe import get_response_id, get_response_recipe, enter_food, recipe_options, food_id, ingredients
+from app.recipe import get_response_id, get_response_recipe, recipe_options, food_id, ingredients, recipe_photo
 
 home_routes = Blueprint("home_routes", __name__)
 
@@ -25,8 +25,13 @@ def view_recipes():
     recipe_list = recipe_options(parsed_response_id)
     list_length = len(recipe_list)
 
+    recipe_photos_list = recipe_photo(parsed_response_id)
+
     print(recipe_list)
-    return render_template("view_recipes.html", food = food, recipe_list = recipe_list)
+
+    print(recipe_photos_list)
+    
+    return render_template("view_recipes.html", food = food, recipe_list = recipe_list, recipe_photos_list = recipe_photos_list)
 
 @home_routes.route("/recipes/ingredients", methods=["POST"])
 def view_ingredients():

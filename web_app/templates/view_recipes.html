@@ -5,17 +5,28 @@
 <h1>Recipe List for '{{food}}'...</h1>
 
 <ol>
-{% for recipe in recipe_list %}
+
+{% for i in range(0, 10) %}
 
 
-    <li>{{recipe}}</li>
+    <li>{{recipe_list[i]}}</li>
+
+    <img src = "{{'https://spoonacular.com/recipeImages/' + recipe_photos_list[i]}}">
 
 {% endfor %}
 </ol> 
 
+<!-- {% for recipe_photo in recipe_photos_list %}
+
+    <img src = "{{'https://spoonacular.com/recipeImages/' + recipe_photo}}">
+
+
+
+{% endfor %} -->
+
 
 <form action="/recipes/ingredients" method="POST" >
-    <label>Number:</label>
+    <label>Number:</label>s
     <input type="text" name="recipe" placeholder="1-10">
     <br>
     <button>Submit</button>
