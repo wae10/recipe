@@ -2,6 +2,11 @@
 
 {% block content %}
 
+<style>
+    h1 {text-align: center;}
+
+</style>
+
 <h1>Ingredients for '{{recipe}}'...</h1>
 
 <ul>
@@ -10,7 +15,15 @@
     <li>{{recipe_amount_list[i] ~ " " + recipe_amount_unit_list[i] + " " + ingredient[i]}}</li>
 
 {% endfor %}
+
 </ul> 
+
+<h2>Instructions:</h2>
+
+<br>
+
+<h5>{{instructions}}</h5>
+
 
 {% endblock %}
 

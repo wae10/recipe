@@ -70,6 +70,32 @@ def recipe_amount_unit(parsed_response_recipe):
         recipe_amount_unit_list.append(parsed_response_recipe["ingredients"][i]["amount"]["us"]["unit"])
     return recipe_amount_unit_list
 
+def ingredients_html(recipe_id):
+    url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/" + str(recipe_id) + "/ingredientWidget"
+
+    headers = {
+        'x-rapidapi-host': "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+        'x-rapidapi-key': "24b9f29661msh672b30c1f618a39p1a7cfejsnb3e7b672fb6e",
+        'accept': "text/html"
+        }
+
+    response = requests.request("GET", url, headers=headers)
+
+    return response.text
+
+def recipe_instructions(recipe_id):
+    url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/" + str(recipe_id) + "/information"
+
+    headers = {
+        'x-rapidapi-host': "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+        'x-rapidapi-key': "24b9f29661msh672b30c1f618a39p1a7cfejsnb3e7b672fb6e"
+        }
+
+    response = requests.request("GET", url, headers=headers)
+
+    parsed_response = json.loads(response.text)
+
+    return parsed_response["instructions"]
 
 
 # needed to remove from global scope
@@ -122,6 +148,11 @@ if __name__ == "__main__":
     ingredients = ingredients(parsed_response_recipe)
 
     print(ingredients)
+
+    print("\n\n\ninstructions\n\n\n")
+
+    print(recipe_instructions(food_id))
+
 
 
 
