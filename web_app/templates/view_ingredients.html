@@ -4,14 +4,13 @@
 
 <h1>Ingredients for '{{recipe}}'...</h1>
 
-<ol>
-{% for x in ingredient %}
+<ul>
+{% for i in range(0, ingredient|length) %}
 
-
-    <li>{{x}}</li>
+    <li>{{recipe_amount_list[i] ~ " " + recipe_amount_unit_list[i] + " " + ingredient[i]}}</li>
 
 {% endfor %}
-</ol> 
+</ul> 
 
 {% endblock %}
 

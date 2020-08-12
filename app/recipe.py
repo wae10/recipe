@@ -58,6 +58,18 @@ def recipe_photo(parsed_response_id):
         recipe_photos_list.append(parsed_response_id["results"][i]["image"])
     return recipe_photos_list
 
+def recipe_amount(parsed_response_recipe):
+    recipe_amount_list = []
+    for i in range(0, len(parsed_response_recipe["ingredients"])):
+        recipe_amount_list.append(parsed_response_recipe["ingredients"][i]["amount"]["us"]["value"])
+    return recipe_amount_list
+
+def recipe_amount_unit(parsed_response_recipe):
+    recipe_amount_unit_list = []
+    for i in range(0, len(parsed_response_recipe["ingredients"])):
+        recipe_amount_unit_list.append(parsed_response_recipe["ingredients"][i]["amount"]["us"]["unit"])
+    return recipe_amount_unit_list
+
 
 
 # needed to remove from global scope

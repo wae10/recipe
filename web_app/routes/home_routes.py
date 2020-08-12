@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, redirect, request, flash
 
-from app.recipe import get_response_id, get_response_recipe, recipe_options, food_id, ingredients, recipe_photo
+from app.recipe import get_response_id, get_response_recipe, recipe_options, food_id, ingredients, recipe_photo, recipe_amount, recipe_amount_unit
 
 home_routes = Blueprint("home_routes", __name__)
 
@@ -30,8 +30,8 @@ def view_recipes():
     print(recipe_list)
 
     print(recipe_photos_list)
-    
-    return render_template("view_recipes.html", food = food, recipe_list = recipe_list, recipe_photos_list = recipe_photos_list)
+
+    return render_template("view_recipes.html", food = food, list_length = list_length, recipe_list = recipe_list, recipe_photos_list = recipe_photos_list)
 
 @home_routes.route("/recipes/ingredients", methods=["POST"])
 def view_ingredients():
@@ -56,4 +56,8 @@ def view_ingredients():
 
     ingredient = ingredients(parsed_response_recipe)
 
-    return render_template("view_ingredients.html", ingredient = ingredient, recipe = recipe)
+    recipe_amount_list = recipe_amount(parsed_response_recipe)
+
+    recipe_amount_unit_list = recipe_amount_unit(parsed_response_recipe)
+
+    return render_template("view_ingredients.html", ingredient = ingredient, recipe = recipe, recipe_amount_list = recipe_amount_list, recipe_amount_unit_list = recipe_amount_unit_list)
