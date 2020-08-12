@@ -64,4 +64,6 @@ def view_ingredients():
 
     instructions = recipe_instructions(food)
 
+    recipe_list.clear()
+
     return render_template("view_ingredients.html", ingredient = ingredient, recipe = recipe, recipe_amount_list = recipe_amount_list, recipe_amount_unit_list = recipe_amount_unit_list, instructions = instructions)
