@@ -16,18 +16,18 @@
 
 
 
-<h1>Recipe List for '{{food}}'...</h1>
+<h1 class = "center" >Recipe List for {{food}}</h1>
 
 
 <ol class = "center">
 
 {% for i in range(0, recipe_list|length) %}
 <div class="img-container">
+    <form action="/recipes/ingredients" method="POST" >
         <li>
-        
-            {{recipe_list[i]}}
+            <input type = "submit" name = "recipe" value = "{{recipe_list[i]}}">
         </li>
-    
+    </form>
 
 
     <img src = "{{'https://spoonacular.com/recipeImages/' + recipe_photos_list[i]}}" style="width:500px;height:600px;" >
@@ -39,21 +39,14 @@
 {% endfor %}
 </ol> 
 
-<!-- {% for recipe_photo in recipe_photos_list %}
 
-    <img src = "{{'https://spoonacular.com/recipeImages/' + recipe_photo}}">
-
-
-
-{% endfor %} -->
-
-
+<!-- 
 <form action="/recipes/ingredients" method="POST" >
     <label>Number:</label>
     <input type="text" name="recipe" placeholder="1-10">
     <br>
     <button>Submit</button>
-</form>
+</form> -->
 
 
 {% endblock %}

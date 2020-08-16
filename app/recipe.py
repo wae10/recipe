@@ -34,8 +34,8 @@ def recipe_options(parsed_response_id):
     return recipe_list
 
 
-def food_id(chosen_recipe, parsed_response_id):
-    food_id = parsed_response_id["results"][chosen_recipe]["id"]
+def food_id(chosen_recipe_index, parsed_response_id):
+    food_id = parsed_response_id["results"][chosen_recipe_index]["id"]
     return food_id
 
 def ingredients(parsed_response_recipe):
@@ -96,6 +96,14 @@ def recipe_instructions(recipe_id):
     parsed_response = json.loads(response.text)
 
     return parsed_response["instructions"]
+    
+
+def recipe_name_to_index_of_recipe_name_in_recipe_list(recipe_name, recipe_list):
+    index = 0
+    for i in range(len(recipe_list)):
+        if recipe_list[i] == recipe_name:
+            index+=i
+    return index
 
 
 # needed to remove from global scope

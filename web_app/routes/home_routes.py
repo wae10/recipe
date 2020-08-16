@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, redirect, request, flash
 
-from app.recipe import get_response_id, get_response_recipe, recipe_options, food_id, ingredients, recipe_photo, recipe_amount, recipe_amount_unit, recipe_instructions
+from app.recipe import get_response_id, get_response_recipe, recipe_options, food_id, ingredients, recipe_photo, recipe_amount, recipe_amount_unit, recipe_instructions, recipe_name_to_index_of_recipe_name_in_recipe_list
 
 home_routes = Blueprint("home_routes", __name__)
 
@@ -27,6 +27,8 @@ def view_recipes():
 
     recipe_photos_list = recipe_photo(parsed_response_id)
 
+    food = food.capitalize()
+
     print(recipe_list)
 
     print(recipe_photos_list)
@@ -38,15 +40,28 @@ def view_ingredients():
     print("VISITED INGREDIENTS PAGE")
     print(foods)
 
-    number = request.form["recipe"]
-
-    number = eval(number)
-    # get last element in the list
     parsed_response_id = get_response_id(foods[-1])
 
     recipe_list = recipe_options(parsed_response_id)
 
-    true_index_of_recipe = number - 1
+    recipe_name = request.form.get("recipe")
+
+    true_index_of_recipe = recipe_name_to_index_of_recipe_name_in_recipe_list(recipe_name, recipe_list)
+
+    print(recipe_list)
+    
+    print(recipe_name)
+
+    print(recipe_list[true_index_of_recipe])
+
+    print(true_index_of_recipe)
+
+    # number = request.form["recipe"]
+
+    # number = eval(number)
+    # get last element in the list
+
+    # true_index_of_recipe = number - 1
 
     food = food_id(true_index_of_recipe, parsed_response_id)
 
@@ -59,8 +74,6 @@ def view_ingredients():
     recipe_amount_list = recipe_amount(parsed_response_recipe)
 
     recipe_amount_unit_list = recipe_amount_unit(parsed_response_recipe)
-
-    chosen_id = food_id(true_index_of_recipe, parsed_response_id)
 
     instructions = recipe_instructions(food)
 
