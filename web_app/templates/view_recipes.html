@@ -6,11 +6,34 @@
 
 <style>
     .img-container {
-      text-align: center;
+        text-align: center;
     }
     .center {
-  text-align: center;
-  list-style-position: inside;
+        text-align: center;
+        list-style-position: inside;
+        color: white;
+        font-size: 80px;
+        margin-bottom: 3%;
+    }
+
+    .imgcenter
+    {
+        text-align: center;
+        list-style-position: inside;
+        font-size: 30px;
+
+    }
+
+    input {
+        background-color: pink;
+        color: white;
+        border: transparent;
+    }
+
+    li {
+        color:white;
+        margin-top: 7%;
+        margin-bottom: 1%;
     }
 </style>
 
@@ -19,7 +42,7 @@
 <h1 class = "center" >Recipe List for {{food}}</h1>
 
 
-<ol class = "center">
+<ol class = "imgcenter">
 
 {% for i in range(0, recipe_list|length) %}
 <div class="img-container">
