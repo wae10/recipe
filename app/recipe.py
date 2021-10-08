@@ -7,7 +7,7 @@ def get_response_id(food):
 
     headers = {
         'x-rapidapi-host': "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-        'x-rapidapi-key': "24b9f29661msh672b30c1f618a39p1a7cfejsnb3e7b672fb6e"
+        'x-rapidapi-key': "API-KEY-HERE"
         }
     querystring = {"number":"10","offset":"0","query":food}
     response = requests.request("GET", url, headers=headers, params=querystring)
@@ -19,7 +19,7 @@ def get_response_recipe(food_id):
 
     headers = {
         'x-rapidapi-host': "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-        'x-rapidapi-key': "24b9f29661msh672b30c1f618a39p1a7cfejsnb3e7b672fb6e"
+        'x-rapidapi-key': "API-KEY-HERE"
         }
     url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/" + str(food_id) + "/ingredientWidget.json"
     response = requests.request("GET", url, headers=headers)
@@ -75,7 +75,7 @@ def ingredients_html(recipe_id):
 
     headers = {
         'x-rapidapi-host': "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-        'x-rapidapi-key': "24b9f29661msh672b30c1f618a39p1a7cfejsnb3e7b672fb6e",
+        'x-rapidapi-key': "API-KEY-HERE",
         'accept': "text/html"
         }
 
@@ -88,7 +88,7 @@ def recipe_instructions(recipe_id):
 
     headers = {
         'x-rapidapi-host': "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-        'x-rapidapi-key': "24b9f29661msh672b30c1f618a39p1a7cfejsnb3e7b672fb6e"
+        'x-rapidapi-key': "API-KEY-HERE"
         }
 
     response = requests.request("GET", url, headers=headers)
